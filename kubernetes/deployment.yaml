@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 3  # Number of instances
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app-container
+          image: your-api-image:tag  # Replace with your Docker image name and tag
+          ports:
+            - containerPort: 3000  # Port your API listens on
